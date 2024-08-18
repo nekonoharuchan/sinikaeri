@@ -1,0 +1,502 @@
+@charset "utf-8";
+
+/* 共通設定
+------------------------ */
+:root{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: #000;
+    overflow-x: hidden;
+    color: #fff;
+    line-height: 1.5;
+    font-family: 'Shippori Mincho B1', '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif;
+}
+.main{
+    position: relative;
+    overflow: hidden;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+button{
+    appearance: none;
+}
+/* section{
+
+} */
+img{
+    width: 100%;
+}
+.inner{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 1.5rem 80px;
+}
+h2{
+    text-align: center;
+    font-size: 3rem;
+    margin: 90px auto;
+}
+.red{
+    color: rgb(173, 12, 12);
+}
+
+
+/*ハンバーガー
+------------------------ */
+.header{
+    z-index: 9999;
+    position: fixed;
+}
+.header_btn {
+    width: 40px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: 0;
+    margin: 30px;
+}
+.header_btn span {
+    display: block;
+    height: 2px;
+    background-color: rgba(255, 255, 255,0);
+    position: relative;
+    transition: 0.3s;
+}
+.header_btn span::before,
+.header_btn span::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: 0.3s;
+}
+.header_btn span::before {
+    top: -8px;
+} 
+.header_btn span::after {
+    bottom: -8px;
+}
+.nav_cont{
+    position: fixed;
+    left: 0;
+    top: 100px;
+    height: calc(100vh + 100px);
+    width: 60vw;
+    background: rgba(0, 0, 0,0.5);
+    margin-top: -100px;
+    opacity: 0;
+    transform: translateX(-120%);
+    transition: all 0.5s ease-in-out 0s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -9;
+    font-size: 1.8rem;
+}
+.nav_cont_list{
+    width: 60%;
+    height: 80%;
+    margin: auto;
+}
+.nav_cont_list li{
+    margin-bottom: 1.5rem;
+}
+.nav_cont_list li a{
+    transition: all 0.5s ease;
+}
+.nav_cont_list li a:hover{
+    color: #000;
+    text-shadow: 0px 0px 10px rgb(234, 29, 29);
+}
+
+@media all and (min-width: 768px){
+    .nav_cont{
+        width: 30vw;
+    }
+}
+
+/* メニューOPEN時の「×」
+------------------------ */
+.is-open{
+    overflow:hidden;
+}
+.is-open .header_btn span {
+    background: transparent;
+}
+.is-open .header_btn span::before {
+    top: 0;
+    transform: rotate(30deg);
+}
+.is-open .header_btn span::after {
+    top: 0;
+    transform: rotate(-30deg);
+}
+/* メニューOPEN時の表示
+------------------------ */
+.is-open .nav_cont {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/*ヒーローイメージ
+------------------------ */
+
+.hero_image{
+    background-image: url(../image/road_dark.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    padding-top: 40px;
+}
+.catchphrase,.delivery_time{
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing:0.5rem;
+    margin: 30px auto 10px;
+}
+.title_logo{
+    display: block;
+    margin: 100px auto;
+    z-index: 999;
+}
+.delivery_time{
+    font-size: 1.7rem;
+}
+.grim{
+    position: absolute;
+    right: 20%;
+    bottom: 90px;
+    width: 280px;
+    filter: drop-shadow(0px 0px 5px #620000);
+    opacity: 0.7;
+    visibility: hidden;
+    animation-name: horror;
+    animation-duration: 15s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes horror{
+    0%{visibility: hidden;}
+    48%{visibility: hidden;}
+    50%{visibility: visible;}
+    52%{visibility: hidden;}
+    100%{visibility: hidden;}
+}
+
+.hi_dl_btn a{
+    font-size: 1.8rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0,0.4);
+    padding: 2rem;
+    box-shadow: 0 0 5px rgb(234, 29, 29);
+    text-align: center;
+    margin: 30px;
+    transition: all 0.5s ease;
+}
+.hi_dl_btn a:hover{
+    color: #000;
+    text-shadow: 0 0 5px rgb(234, 29, 29);
+    background-color: rgb(0, 0, 0,0.6);
+    box-shadow: 0 0 5px #000;
+}
+
+@media all and (min-width: 768px){
+    .catchphrase{
+        font-size: 1.7rem;
+    }
+    .delivery_time{
+        font-size: 1.9rem;
+    }
+    .title_logo{
+        max-width:55%;
+        margin-top: 120px;
+    }
+    .hi_dl_btn a{
+        position: absolute;
+        font-size: 1.4rem;
+        bottom: 20px;
+        left: 20px;
+    }
+}
+
+/*ストーリー
+------------------------ */
+
+.about_catch{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgb(234, 29, 29);
+    animation-name: glitch;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes glitch{
+    0%{text-shadow: 0px 0px 10px rgb(234, 29, 29);}
+    45%{text-shadow: 0px 0px 10px rgb(234, 29, 29);}
+    50%{text-shadow: 5px 0.5px 0.5px rgba(255, 0, 255, .8), -5px -0.5px 0.5px rgba(0, 255, 255, .8);}
+    55%{text-shadow: 0px 0px 10px rgb(234, 29, 29);}
+    100%{text-shadow: 0px 0px 10px rgb(234, 29, 29);}
+}
+
+.about_txt{
+    line-height: 2;
+    font-size: 1.3rem;
+    text-align: right;
+}
+.about_txt p{
+    display: inline-block;
+    text-align: left;
+}
+@media all and (min-width: 768px){
+    .about_catch{
+        margin: 0 0 2rem 2rem;
+    }
+}
+
+/*遊び方
+------------------------ */
+
+.explanation_g{
+    margin-bottom: 90px;
+}
+.item_g{
+    margin: 30px auto 90px;
+    text-align: center;
+}
+.item_g .image_g{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.howto{
+    text-shadow: 0 0 10px #000;
+    margin: 30px;
+    min-width: 45%;
+}
+.howto dt,.item_g dt{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.item_g dd{
+    font-size: 1.1rem;
+}
+.howto dd{
+    font-size: 1.1rem;
+    text-align: left;
+}
+.e_image{
+    min-width: 450px;
+    z-index: -9;
+}
+.knife_image,.bill_image{
+    filter: drop-shadow(0px 0px 5px #fff);
+    margin:0 40px;  
+}
+.knife_image{
+    width: 45%;
+}
+.bill_image{
+    width: 100px;
+}
+@media all and (min-width: 768px){
+    .explanation_g{
+        display: flex;
+        align-items: center;
+    }
+    .howto dt,.item_g dt{
+        font-size: 2.7rem;
+    }
+    .howto dd,.item_g dd{
+        font-size: 1.3rem;
+    }
+    .howto_le{
+        text-align: left;
+    }
+    .howto_ri{
+        text-align: right;
+    }
+    .knife_image{
+        width: 20%;
+    }
+}
+
+/*ティザーPV
+------------------------ */
+.movie{
+    position: relative;
+    z-index: 0;
+}
+.movie::before{
+    content: '';
+    background-image: url(../image/park.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120vw;
+    height: 100%;
+    filter: blur(3px);
+    z-index: -9;
+}
+.pv{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    box-shadow: 0 0 10px #000;
+}
+
+/*ダウンロード
+------------------------ */
+.dl_btn a{
+    border: #fff solid 0.5px;
+    font-size: 1.3rem;
+    margin:0 auto 60px;
+    text-align: center;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 80%;
+	height: 4rem;
+}
+.dl_btn a:hover{
+    background-color: #fff;
+    color: #000;
+    transition: 1s ease;
+}
+.warning{
+    width: 80%;
+    margin: 40px auto;
+}
+.warning dt{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+@media all and (min-width: 768px){
+    .dl_btn a{
+        max-width: 60%;
+    }
+    .warning{
+        width: 72%;
+    }
+}
+
+
+/*製品情報
+------------------------ */
+.table{
+    margin: 0 auto;
+    width: 90%;
+}
+.table dl{
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+.table dl dt,.table dl dd{
+    padding: 10px 1rem;
+    width: 50%;
+}
+.table dl dt{
+    border-right: #fff solid 1px;
+    text-align: right;
+}
+
+@media all and (min-width: 768px){
+    .table{
+        width: 70%;
+    }
+    .table dl dt,.table dl dd{
+        width: 45%;
+    }
+}
+
+/*プレイバナー
+------------------------ */
+.play_banner{
+    width: 100vw;
+}
+.play_banner a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../image/town.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.5s ease;
+}
+.play_banner a img{
+    width: 45%;
+}
+.play_banner a p{
+    font-size: 1.5rem;
+}
+.play_banner a:hover{
+    filter: invert(100%);
+}
+
+@media all and (min-width: 768px){
+    .play_banner a img{
+        width: 35%;
+    }
+    .play_banner a p{
+        font-size: 2.5rem;
+    }
+}
+
+footer{
+    text-align: center;
+    padding: 15px;
+}
+
+ /* スクロール */
+ .fade_in{
+    opacity: 0;
+    transition-duration: 1.8s;
+    transition-property: opacity, transform;
+  }
+  .fade_in_s{
+    transition-duration: 1.8s;
+    transition-delay: 2s;
+  }
+  .fade_in_up{
+    transform: translate(0, 50px);
+  }
+  .fade_in_down{
+    transform: translate(0, -50px);
+  }
+  .fade_in_left{
+    transform: translate(-50px, 0);
+  }
+  .fade_in_right{
+    transform: translate(50px, 0);
+  }
+  .scroll_in{
+    opacity: 1;
+    transform: translate(0, 0);
+  }
